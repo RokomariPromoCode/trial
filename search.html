@@ -1,0 +1,71 @@
+---
+layout: default
+title: Search
+---
+
+<section class="search-page">
+  <h1>Search results for: "<span id="search-query-text"></span>"</h1>
+  <div id="search-results" class="category-list"></div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var params = new URLSearchParams(window.location.search);
+  var qRaw = params.get('q') || '';
+  var q = qRaw.trim().toLowerCase();
+  document.getElementById('search-query-text').textContent = qRaw;
+
+  if (!q || !window.buildSearchIndex) return;
+
+  var container = document.getElementById('search-results');
+
+  window.buildSearchIndex().then(function (index) {
+    var matches = [];
+    var seen = new Set();
+
+    index.forEach(function (it) {
+      if ((it.title && it.title.indexOf(q) !== -1) || (it.desc && it.desc.indexOf(q) !== -1)) {
+        var key = (it.raw.title || '') + '|' + (it.raw.link || '');
+        if (seen.has(key)) return;
+        seen.add(key);
+        matches.push(it);
+      }
+    });
+
+    // Category matches
+    if (window.SEARCH_CATEGORIES) {
+      Object.keys(window.SEARCH_CATEGORIES).forEach(function (ckey) {
+        if (ckey.indexOf(q) !== -1) {
+          var cat = window.SEARCH_CATEGORIES[ckey];
+          matches.unshift({
+            raw: {
+              title: cat.name + ' ক্যাটাগরি',
+              desc: 'ক্যাটাগরি পেইজ দেখুন',
+              img: '',
+              link: cat.href
+            },
+            href: cat.href
+          });
+        }
+      });
+    }
+
+    if (!matches.length) {
+      container.innerHTML = '<p>কোনো ফলাফল পাওয়া যায়নি।</p>';
+      return;
+    }
+
+    matches.forEach(function (it) {
+      var li = document.createElement('div');
+      li.className = 'list-item';
+      li.innerHTML = '<img src="' + (it.raw.img || 'https://via.placeholder.com/160x120') + '" alt="">' +
+        '<div class="meta">' +
+        '<h3>' + (it.raw.title || '') + '</h3>' +
+        '<p>' + (it.raw.desc || '') + '</p>' +
+        '<a class="buy-btn" href="' + (it.raw.link || '#') + '" target="_blank" rel="noopener">ডিসকাউন্ট পেতে ক্লিক করুন [Buy Now]</a>' +
+        '</div>';
+      container.appendChild(li);
+    });
+  });
+});
+</script>

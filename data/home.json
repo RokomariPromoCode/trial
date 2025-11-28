@@ -1,0 +1,10 @@
+[
+  {
+    "title": "ডেমো প্রোডাক্ট",
+    "author": "ডেমো লেখক",
+    "seller": "Demo Seller",
+    "img": "https://via.placeholder.com/400x300?text=Demo",
+    "desc": "এইটা একটি ডেমো প্রোডাক্ট বর্ণনা। আসল ডাটা এখানে দিন।",
+    "link": "https://example.com"
+  }
+]
