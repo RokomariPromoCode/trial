@@ -1,0 +1,55 @@
+<!-- _includes/header.html -->
+<header class="modern-header">
+  <div class="header-container container">
+    <div class="header-logo">
+      <a href="{{ '/' | relative_url }}">
+        <img src="{{ '/assets/logo.png' | relative_url }}" alt="Rokomari Promo Code Logo" style="height:42px">
+      </a>
+    </div>
+
+    <div class="header-search-wrapper">
+      <div class="search-box">
+        <input id="header-search-input"
+               placeholder="ক্যাটাগরি, বই বা লেখকের নাম খুঁজুন..."
+               autocomplete="off">
+        <span id="search-lens" class="search-icon-btn" role="button" aria-label="Search">🔍</span>
+        <span id="search-clear" class="clear-btn" role="button" aria-label="Clear search">✕</span>
+      </div>
+      <div id="header-search-results" class="search-results-dropdown"></div>
+    </div>
+
+    <!-- Top quick buttons (desktop) -->
+    <div class="header-cta" aria-label="Quick actions">
+      <a class="btn-small btn-ghost" href="{{ '/' | relative_url }}#today-deals">আজকের অফার সমূহ দেখুন</a>
+      <a class="btn-small btn-ghost" href="{{ '/' | relative_url }}#coupon-section">কুপন সমূহ দেখুন</a>
+      <a class="btn-small btn-primary" href="{{ '/' | relative_url }}#how-to-buy">কিভাবে কিনবেন</a>
+    </div>
+
+    <!-- 🔹 MOVE BUTTON HERE (outside nav) -->
+    <button
+      class="hamburger"
+      type="button"
+      aria-label="Toggle menu"
+      aria-controls="site-menu"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
+    <nav class="header-menu" aria-label="Primary">
+      <ul class="menu-links" id="site-menu">
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/rokomari-best-seller/' | relative_url }}">Best Seller</a></li>
+        <li><a href="{{ '/rokomari-books/' | relative_url }}">Books</a></li>
+        <li><a href="{{ '/rokomari-electronics/' | relative_url }}">Electronics</a></li>
+        <li><a href="{{ '/rokomari-foods/' | relative_url }}">Foods</a></li>
+        <li><a href="{{ '/gorer-bazar/' | relative_url }}">Gorer Bazar</a></li>
+        <li><a href="{{ '/rokomari-kids-toys/' | relative_url }}">Kids Toys</a></li>
+        <li><a href="{{ '/rokomari-baby-products/' | relative_url }}">Baby Products</a></li>
+        <li><a href="{{ '/rokomari-beauty/' | relative_url }}">Beauty</a></li>
+        <!-- <li><a href="{{ '/rokomari-others/' | relative_url }}">Others</a></li> -->
+        <li><a href="{{ '/privacy-policy/' | relative_url }}">Privacy & Policy</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

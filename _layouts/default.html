@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'bn' }}">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNZH27N8T2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PNZH27N8T2');
+  </script>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="Neue5PUx+6hPJuzgIywKJw" async></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  {%- assign page_title = page.title | default: site.title -%}
+  {%- assign page_description = page.description | default: site.description -%}
+  {%- assign page_keywords = page.keywords | default: site.keywords -%}
+
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description | strip | escape }}">
+
+  {%- if page_keywords and page_keywords.size > 0 -%}
+    <meta name="keywords" content="{{ page_keywords | join: ', ' | escape }}">
+  {%- endif -%}
+
+  {%- if page.noindex == true -%}
+    <meta name="robots" content="noindex,follow">
+  {%- else -%}
+    <meta name="robots" content="index,follow">
+  {%- endif -%}
+
+  <!-- Canonical URL -->
+  <!--<link rel="canonical" href="{{ page.url | absolute_url }}">-->
+
+  <!-- Open Graph -->
+  <meta property="og:locale" content="bn_BD">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ page_description | strip | escape }}">
+  <meta property="og:image" content="{{ site.og_image | default: site.logo | default: '/assets/logo.png' | absolute_url }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page_title }}">
+  <meta name="twitter:description" content="{{ page_description | strip | escape }}">
+  <meta name="twitter:image" content="{{ site.og_image | default: site.logo | default: '/assets/logo.png' | absolute_url }}">
+
+  <!-- WebSite Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site.title | escape }}",
+    "url": "{{ site.url | default: '/' | absolute_url }}",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ site.url | default: '/' | absolute_url }}?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site.title | escape }}",
+    "url": "{{ site.url | default: '/' | absolute_url }}",
+    "logo": "{{ site.logo | default: '/assets/logo.png' | absolute_url }}"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Primary stylesheet -->
+  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
+
+  <!-- Global JS variables -->
+  <script>
+    (function(){
+      /* Compute SITE_BASE from Jekyll baseurl */
+      var rawBase = "{{ site.baseurl | default: '' }}";
+      rawBase = String(rawBase || '').trim();
+
+      if (!rawBase || rawBase === "/") {
+        window.SITE_BASE = "";
+      } else {
+        if (rawBase[0] !== "/") rawBase = "/" + rawBase;
+        window.SITE_BASE = rawBase.replace(/\/$/, "");
+      }
+
+      /* Pages may set JSON_DATA_PATH in front matter if needed */
+      if (typeof window.JSON_DATA_PATH === 'undefined') {
+        window.JSON_DATA_PATH = null;
+      }
+
+      /* Pages must explicitly turn this ON to load cards */
+      if (typeof window.FORCE_LOAD_CARDS === 'undefined') {
+        window.FORCE_LOAD_CARDS = false;
+      }
+    })();
+  </script>
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+
+<link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/images/android-chrome-192x192.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/images/android-chrome-512x512.png' | relative_url }}">
+
+<link rel="shortcut icon" href="{{ '/favico.ico' | relative_url }}" type="image/x-icon">
+
+<link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
+</head>
+<body>
+
+  {% include header.html %}
+
+  {% include breadcrumbs.html %}
+
+  <main id="site-main" class="site-main">
+    {{ content }}
+  </main>
+
+  {%- if page.show_faq != false -%}
+    {% include faq.html %}
+  {%- endif -%}
+
+  {% include footer.html %}
+  {% include wa.html %}
+
+  <!-- Scroll up/down controls -->
+  <div class="scroll-control">
+    <button class="scroll-btn scroll-btn-up" aria-label="Scroll to top">
+      ↑
+    </button>
+    <button class="scroll-btn scroll-btn-down" aria-label="Scroll to bottom">
+      ↓
+    </button>
+  </div>
+
+  <script src="{{ '/assets/app.js' | relative_url }}" defer></script>
+</body>
+</html>

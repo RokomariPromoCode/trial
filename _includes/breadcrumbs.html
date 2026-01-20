@@ -1,0 +1,11 @@
+<!-- _includes/breadcrumbs.html -->
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      {% if page.url and page.url != '/' %}
+        <li aria-current="page">{{ page.title | default: 'Page' }}</li>
+      {% endif %}
+    </ol>
+  </div>
+</nav>
