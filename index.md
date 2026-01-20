@@ -24,7 +24,7 @@ keywords:
       <em>Rokomari coupon code</em> ও ডিসকাউন্ট অফার – এক জায়গাতেই।
     </p>
     <a href="#today-deals" class="btn-primary">আজকের সব অফার দেখুন</a>
-    <a href="#today-deals" class="btn-primary">আজকের কুপন দেখুন</a>
+    <a href="#coupons" class="btn-primary">আজকের কুপন দেখুন</a>
     <a href="#how-to-use" class="btn-primary">কিভাবে ব্যবহার করবনে</a>
   </div>
 </section>
