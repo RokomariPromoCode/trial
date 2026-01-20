@@ -22,6 +22,18 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+:root{
+  --bg: #f6f6f8;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --brand: #2563eb;
+  --brand-2: #10b981;
+  --shadow: 0 12px 34px rgba(2, 6, 23, 0.08);
+  --shadow-soft: 0 8px 24px rgba(2, 6, 23, 0.06);
+  --ring: 0 0 0 4px rgba(37, 99, 235, 0.18);
+}
+
 
 img {
   max-width: 100%;
@@ -520,14 +532,16 @@ ol li {
    HOME CATEGORY ROW / SLIDER (.cat-row)
    ============================================================ */
 .cat-row {
-  background: #fff;
+  background: var(--card);
   border-radius: 12px;
   padding: 14px;
-  box-shadow: 0 10px 30px rgba(12, 20, 30, 0.06);
+  box-shadow: var(--shadow-soft);
   border: 1px solid rgba(12, 20, 30, 0.03);
   position: relative;
   margin: 22px 0;
   overflow: visible;
+  content-visibility: auto;
+  contain-intrinsic-size: 520px;
 }
 
 .cat-header {
@@ -647,12 +661,28 @@ ol li {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 24px rgba(12, 20, 30, 0.06);
+  box-shadow: var(--shadow-soft);
   border: 1px solid rgba(12, 20, 30, 0.03);
   position: relative;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   transform: translateY(10px);
   opacity: 0;
   animation: slide-and-fade-in 0.45s ease forwards;
+}
+
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: rgba(37, 99, 235, 0.18);
+}
+
+.card:focus-within{
+  box-shadow: var(--shadow), var(--ring);
+  border-color: rgba(37, 99, 235, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
 }
 
 @keyframes slide-and-fade-in {
@@ -664,6 +694,11 @@ ol li {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ scroll-behavior: auto !important; }
+  .card{ animation: none !important; opacity: 1; transform: none; }
 }
 
 /* promo badge */

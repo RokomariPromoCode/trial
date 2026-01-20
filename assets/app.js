@@ -198,9 +198,11 @@
       });
     }
 
-    // --- SEARCH: auto-index all /data/*.json using data/index.json ---
+    // --- SEARCH: optimized index build (lazy + precomputed haystack) ---
+    // localIndex items are normalized objects with an extra __haystack field for fast searching.
     let localIndex = [];
-    (async ()=>{
+
+    async function buildSearchIndex(){
       try{
         const indexList = await fetchJson('/data/index.json');
         const paths = Array.isArray(indexList)
@@ -209,6 +211,7 @@
               .map(it => it.path || it)
           : [];
 
+        // Fetch in parallel, then normalize and dedupe
         const fetched = await Promise.all(paths.map(p => fetchJson(p)));
         const merged = fetched.flat();
         const normalized = normalize(merged);
@@ -216,14 +219,25 @@
         const map = new Map();
         normalized.forEach(item=>{
           const key = (item.link || item.title).toString();
-          if(!map.has(key)) map.set(key, item);
+          if(!map.has(key)){
+            // Precompute a lowercase search string (title+author+seller)
+            const hay = `${item.title||''} ${item.author||''} ${item.seller||''}`.toLowerCase();
+            map.set(key, Object.assign({}, item, { __haystack: hay }));
+          }
         });
         localIndex = Array.from(map.values());
       } catch(err){
         console.warn('search index load failed', err);
         localIndex = [];
       }
-    })();
+    }
+
+    // Build index when the browser is idle (improves initial load)
+    if('requestIdleCallback' in window){
+      requestIdleCallback(()=>buildSearchIndex(), { timeout: 1500 });
+    } else {
+      setTimeout(()=>buildSearchIndex(), 500);
+    }
 
     let timer;
     if(searchInput){
@@ -239,7 +253,8 @@
         if(clearBtn) clearBtn.style.display='block';
         if(lens) lens.style.display='none';
         timer = setTimeout(()=>{
-          const matches = localIndex.length ? localIndex.filter(it => (it.title + ' ' + (it.author||'') + ' ' + (it.seller||'')).toLowerCase().includes(q.toLowerCase())) : [];
+          const qLower = q.toLowerCase();
+          const matches = localIndex.length ? localIndex.filter(it => (it.__haystack || '').includes(qLower)) : [];
           const seen = new Set();
           const unique = [];
           matches.forEach(m=>{
