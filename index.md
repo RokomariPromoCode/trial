@@ -23,16 +23,7 @@ keywords:
       বই, ইলেকট্রনিক্স, ফার্নিচার, ফুড, কিডস টয়স, বিউটি সহ প্রায় সব ক্যাটাগরির হালনাগাদ
       <em>Rokomari coupon code</em> ও ডিসকাউন্ট অফার – এক জায়গাতেই।
     </p>
-    <div class="hero-cta-row">
-      <a href="#today-deals" class="btn-primary">আজকের সব অফার দেখুন</a>
-      <a href="#how-to-buy" class="btn-secondary">কিভাবে কিনবেন</a>
-    </div>
-
-    <div class="affiliate-note" role="note">
-      <strong>নোট:</strong> এই ওয়েবসাইটে শেয়ার করা কুপনগুলো শুধুমাত্র আমাদের <strong>affiliate link</strong>
-      দিয়ে ভিজিট করলে প্রযোজ্য। আপনি যদি আমাদের লিংক দিয়ে কোনো পণ্যে যান, তাহলে সেই কুপন একই অর্ডারের
-      অন্যান্য পণ্যের ক্ষেত্রেও apply হতে পারে (রকমারির শর্ত সাপেক্ষে)।
-    </div>
+    <a href="#today-deals" class="btn-primary">আজকের সব অফার দেখুন</a>
   </div>
 </section>
 
@@ -46,8 +37,6 @@ keywords:
 </section>
 
 <!-- JSON-BASED CARD ROWS (HORIZONTAL) -->
-<div id="coupon-section"></div>
-
 <section id="today-deals" class="container home-deals" aria-label="আজকের Rokomari promo code">
   <h2>আজকের Rokomari promo code – ক্যাটাগরি অনুযায়ী</h2>
   <p class="section-subtitle">
@@ -80,7 +69,7 @@ keywords:
 </section>
 
 <!-- HOW TO USE PROMO CODE -->
-<section id="how-to-buy" class="container home-guide">
+<section class="container home-guide">
   <h2>কীভাবে Rokomari promo code ব্যবহার করবেন? (Step-by-step)</h2>
   <p>
     নতুন বা পুরনো যেই ক্রেতাই হন, সঠিকভাবে কোড ব্যবহার না করলে অনেক সময় ডিসকাউন্ট প্রযোজ্য হয় না।
