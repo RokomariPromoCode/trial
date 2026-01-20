@@ -24,6 +24,8 @@ keywords:
       <em>Rokomari coupon code</em> ও ডিসকাউন্ট অফার – এক জায়গাতেই।
     </p>
     <a href="#today-deals" class="btn-primary">আজকের সব অফার দেখুন</a>
+    <a href="#today-deals" class="btn-primary">আজকের কুপন দেখুন</a>
+    <a href="#how-to-use" class="btn-primary">কিভাবে ব্যবহার করবনে</a>
   </div>
 </section>
 
@@ -67,9 +69,13 @@ keywords:
     <li><a href="{{ '/rokomari-best-seller/' | relative_url }}">🔥 Best Seller Rokomari promo code</a> – সব ক্যাটাগরির সবচেয়ে বেশি বিক্রি হওয়া পণ্যের বাছাই অফার।</li>
   </ul>
 </section>
+<section id="coupons">
+  <img src="assets/3_1768061233954.jpeg">
+  <p>Last update : January 20, 2026</p>
+</section>
 
 <!-- HOW TO USE PROMO CODE -->
-<section class="container home-guide">
+<section class="container home-guide" id="how-to-use">
   <h2>কীভাবে Rokomari promo code ব্যবহার করবেন? (Step-by-step)</h2>
   <p>
     নতুন বা পুরনো যেই ক্রেতাই হন, সঠিকভাবে কোড ব্যবহার না করলে অনেক সময় ডিসকাউন্ট প্রযোজ্য হয় না।
